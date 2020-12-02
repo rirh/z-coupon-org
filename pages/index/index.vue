@@ -26,7 +26,7 @@
 		},
 		computed: {
 			rowComputed() {
-				return uni.getSystemInfoSync().windowHeight / 30;
+				return uni.getSystemInfoSync().windowHeight / 35;
 			}
 		},
 		data() {
@@ -35,27 +35,35 @@
 				dataList: []
 			}
 		},
+		onPullDownRefresh() {
+			this.init();
+		},
 		onLoad() {
 			this.loading = true;
-			uniCloud.callFunction({
-				name: 'coupon',
-				success: ({
-					result: {
-						code,
-						data
-					}
-				}) => {
-					this.loading = false;
-					if (!code) this.dataList = data
-				},
-				fail(error) {
-					this.loading = false;
-
-					console.log(error);
-				}
-			})
+			this.init();
 		},
 		methods: {
+			init() {
+				uniCloud.callFunction({
+					name: 'coupon',
+					success: ({
+						result: {
+							code,
+							data
+						}
+					}) => {
+						uni.vibrateShort()
+						uni.stopPullDownRefresh();
+						this.loading = false;
+						if (!code) this.dataList = data;
+					},
+					fail(error) {
+						uni.stopPullDownRefresh();
+						this.loading = false;
+						console.log(error);
+					}
+				})
+			},
 			handleShare(item) {
 				// #ifdef MP-WEIXIN
 				console.log(item);
@@ -96,17 +104,19 @@
 		width: 94vw;
 		margin-left: 3vw;
 		margin-bottom: 20rpx;
-		background-color: #fff;
+		background-color: #d85c54;
 		border-radius: 10rpx;
 		display: flex;
 		padding: 20rpx;
+		background-color: ;
 		box-shadow: 0rpx 3rpx 3rpx -2rpx rgba(0, 0, 0, 0.2), 0rpx 3rpx 4rpx 0rpx rgba(0, 0, 0, 0.14), 0rpx 1rpx 8rpx 0rpx rgba(0, 0, 0, 0.12);
 
 	}
 
 	.goods-image {
 		height: 100%;
-		width: 160rpx;
+		width: 140rpx;
+		margin-left: 10rpx;
 	}
 
 	.goods-content {
@@ -115,22 +125,22 @@
 		justify-content: center;
 		align-items: start;
 		flex-direction: column;
-		margin-left: 40rpx;
+		margin-left: 50rpx;
 	}
 
 	.goods-price {
-		color: #d85c54;
-		font-size: 58rpx;
+		color: #fff;
+		font-size: 78rpx;
 		font-weight: bold;
-		font-family: 'Courier New', Courier, monospace;
+		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 	}
 
 	.goods-news {
-		color: #333;
+		color: #f4f4f4;
 		font-size: 38rpx;
 		font-weight: bold;
 		font-family: 'Courier New', Courier, monospace;
-		padding-top: 30rpx;
+		padding-top: 20rpx;
 		display: block;
 	}
 </style>
