@@ -1,4 +1,10 @@
 'use strict';
+const db = uniCloud.database();
+const collection = db.collection('wx-openids');
+const tools = require('tools');
+const {
+	generateID
+} = tools;
 exports.main = async (event, context) => {
 	//event为客户端上传的参数
 	console.log('event : ', event)
@@ -9,7 +15,11 @@ exports.main = async (event, context) => {
 	const res = await uniCloud.httpclient.request(apiUrl, {
 		dataType: 'json'
 	})
-	console.log(res)
+	const openid = res.data.openid;
+	const docid = generateID(openid);
+	let openidsres = await collection.doc(docid).set({
+		openid
+	});
 	//返回数据给客户端
-	return res
+	return openidsres
 };
