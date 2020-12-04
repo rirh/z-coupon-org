@@ -42,6 +42,12 @@
 			this.loading = true;
 			this.init();
 		},
+		onShareAppMessage: function(options) {
+			return {
+				title: 'COUPON PRO+',
+				path: '/pages/index/index',
+			}
+		},
 		methods: {
 			init() {
 				uniCloud.callFunction({
