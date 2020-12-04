@@ -1,0 +1,11 @@
+{
+	"name": "coupon",
+	"dbkeys": {
+		"url": "",
+		"name": "",
+		"image": "",
+		"targetAppid": "",
+		"content": "",
+		"price": ""
+	}
+}

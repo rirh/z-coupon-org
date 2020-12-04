@@ -1,0 +1,12 @@
+// 本文件中的json内容将在云函数【运行】时作为参数传给云函数。
+// 配置教程参考：https://uniapp.dcloud.net.cn/uniCloud/quickstart?id=runparam
+{
+	"action": "remove",
+	"_id": "8163d365dab91387ecf24d19",
+	"url": "pages/sharePid/web/index?scene=s.click.ele.me%2FGLRwjtu",
+	"name": "饿了么最高可领36元",
+	"image": "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-aliyun-ngaburcbpntf97199d/dd570af0-33d2-11eb-bd01-97bc1429a9ff.jpeg",
+	"targetAppid": "wxece3a9a4c82f58c9",
+	"content": "饿了么最高可减36元",
+	"price": "39"
+}

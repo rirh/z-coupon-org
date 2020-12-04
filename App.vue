@@ -1,21 +1,18 @@
 <script>
 	export default {
 		onLaunch: function() {
-			console.log('App Launch');
 			// #ifdef MP-WEIXIN
 			wx.login({
 				success(res) {
 					if (res.code) {
 						//发起网络请求
-						uniCloud.callFunction({
-							name: 'login-auth-wechat',
-							data: {
-								code: res.code
-							},
-							success(res) {
-								console.log(res);
-							}
-						});
+						console.log(res.code);
+						// uniCloud.callFunction({
+						// 	name: 'login-auth-wechat',
+						// 	data: {
+						// 		code: res.code
+						// 	},
+						// });
 					} else {
 						console.log('登录失败！' + res.errMsg);
 					}
@@ -23,9 +20,7 @@
 			});
 			// #endif
 		},
-		onShow: function() {
-			console.log('App Show');
-		},
+		onShow: function() {},
 		onHide: function() {
 			console.log('App Hide');
 		},

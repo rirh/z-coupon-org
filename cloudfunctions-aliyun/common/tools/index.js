@@ -34,12 +34,16 @@ function enResult(result) {
 async function enRequestParams(event, uniID) {
 	let result;
 	// 公用模块用法请参考 https://uniapp.dcloud.io/uniCloud/cf-common
+	// 格式化数据 url化的接口和 客户端的不一致
 	event = isJSON(event) ? JSON.parse(event) : event;
 	result = event.body ? JSON.parse(event.body) : event;
+	// url 端 token 在 header 里面取得 
 	const h5_token = event.headers && event.headers['x-token'];
+	// token 在客户端是uniIdToken 或者 uni_id_token 
 	let token = result.uniIdToken || result.uni_id_token || h5_token;
 	result.action = result.action || result.type || '';
-	if (token) {
+	// 如果有token就需要校验
+	if (token && uniID) {
 		const res = await uniID.checkToken(token);
 		if (res.code) return res;
 		result.token = token;
@@ -66,9 +70,9 @@ const sha512 = function(source, salt) {
  * function 
  * @param {string} user
  */
-function generateID(user) {
+function generateID(user, len = 6) {
 	let code = sha512(user, 'tigerzh') // 这里使用了timestemp作为盐值，让生成ID更不随机
-	return code.Hash.substr(code.Hash.length - 6, code.Hash.length - 1) // 如果需要更多位 可以多截取一些，也可以从不同位置截取
+	return code.Hash.substr(code.Hash.length - len, code.Hash.length - 1) // 如果需要更多位 可以多截取一些，也可以从不同位置截取
 }
 module.exports = {
 	isJSON,
