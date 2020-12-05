@@ -23,7 +23,7 @@ module.exports = async function (event) {
 	})
 	event.code = res.data;
 	result = res.data;
-	if (!event.code) {
+	if (!res.code) {
 		event.openid = res.data.openid;
 		const docid = generateID(`${event.openid}`, 24);
 		let data = {}
