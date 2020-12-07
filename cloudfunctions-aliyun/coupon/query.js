@@ -32,6 +32,11 @@ async function query(event) {
 		.skip(skip)
 		.limit(limit)
 		.get();
+	const count = await collection.count();
+	result = {
+		...result,
+		...count
+	};
 	uniCloud.logger.log('======query end====')
 	return result;
 }
