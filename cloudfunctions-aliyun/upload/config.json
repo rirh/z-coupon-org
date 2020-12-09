@@ -1,0 +1,11 @@
+{
+	"name": "upload",
+	"dbkeys": {
+		"url": "",
+		"name": "",
+		"image": "",
+		"targetAppid": "",
+		"content": "",
+		"price": ""
+	}
+}

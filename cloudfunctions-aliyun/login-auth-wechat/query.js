@@ -13,7 +13,7 @@ async function queryRow(event) {
 	const _id = event.id;
 	result = await collection.where({
 		_id
-	})
+	}).get();
 	uniCloud.logger.log('======query end====')
 	return result;
 }

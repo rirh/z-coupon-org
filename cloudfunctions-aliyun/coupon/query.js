@@ -10,10 +10,10 @@ async function queryRow(event) {
 	let result;
 	delete event.action;
 	uniCloud.logger.log('======query========')
-	const _id = event.id;
+	const _id = event._id;
 	result = await collection.where({
 		_id
-	})
+	}).get();
 	uniCloud.logger.log('======query end====')
 	return result;
 }

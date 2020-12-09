@@ -2,6 +2,7 @@
 export default {
 	onLaunch: function() {
 		console.log('App Launch');
+		console.log(uni.getSystemInfoSync());
 		// #ifdef MP-WEIXIN
 		wx.login({
 			success(res) {
