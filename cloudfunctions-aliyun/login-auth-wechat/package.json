@@ -1,9 +1,0 @@
-{
-	"name": "role",
-	"version": "1.0.0",
-	"main": "index.js",
-	"license": "MIT",
-	"dependencies": {
-		"tools": "file:../common/tools"
-	}
-}

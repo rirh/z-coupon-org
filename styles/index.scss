@@ -1,0 +1,23 @@
+@import './variables.scss';
+.append {
+	transform: rotate(180deg);
+	display: grid;
+	place-items: center;
+
+	.icon {
+		font-size: 40rpx;
+	}
+}
+.row {
+	height: 90rpx;
+	overflow: hidden;
+}
+
+.row:active {
+	background-color: #fafafa;
+}
+
+.bg-primary {
+	background-color: $--color-primary;
+	color: #fff;
+}
