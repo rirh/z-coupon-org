@@ -25,7 +25,7 @@ async function query(event) {
 	const where = {};
 	const {
 		page = 1,
-		limit = 15
+			limit = 15
 	} = event
 	let skip = (page - 1) * limit;
 	result = await collection.where(where)

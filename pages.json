@@ -8,18 +8,18 @@
 			}
 		},
 		{
-			"path": "pages/discover/discover",
-			"style": {
-				"navigationBarTitleText": "发现",
-				"enablePullDownRefresh": true
-			}
-		},
-		{
 			"path": "pages/me/me",
 			"style": {
 				"navigationBarTitleText": "我的",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "pages/discover/discover",
+			"style": {
+				"navigationBarTitleText": "发现",
+				"enablePullDownRefresh": true
+			}
+
 		}
 	],
 	"tabBar": {

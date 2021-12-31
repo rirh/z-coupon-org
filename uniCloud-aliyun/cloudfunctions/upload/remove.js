@@ -2,6 +2,9 @@
 /**
  *  remove 
  */
+const config = require('./config.json')
+const db = uniCloud.database();
+const collection = db.collection(config.name);
 module.exports = async function(event) {
 	let result;
 	delete event.action;
